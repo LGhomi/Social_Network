@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
-from apps.user.form import RegisterUserModelForm
-from apps.user.models import User
+from social_network.apps.user.form import UserLoginModelForm, RegisterUserModelForm
+from social_network.apps.user.models import User
 
 
 class Search(View):
@@ -28,3 +28,17 @@ class UserView(View):
             return redirect('ok')
         return render(request, 'user/register_user.html', {'form': form})
 
+
+class UserLoginView(View):
+    def get(self, request):
+        form = UserLoginModelForm()
+        return render(request, 'user/user_login.html', {'form': form})
+
+    def post(self, request):
+        form = UserLoginModelForm(request.POST)
+        if form.is_valid():
+            validated_data = form.cleaned_data
+            user_obj = User(**validated_data)
+            user_obj.save()
+            return redirect('ok')
+        return render(request, 'user/user_login.html', {'form': form})

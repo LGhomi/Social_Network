@@ -19,13 +19,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="user model added">
+    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="validators_change position">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/apps/user/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/social_network/apps/user/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/apps/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/social_network/apps/user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/apps/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/social_network/apps/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PUSH_TAGS">
@@ -66,6 +76,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\asus\Desktop\git\social_network\apps" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\git\social_network" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -79,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614021554030</updated>
       <workItem from="1614021559560" duration="192000" />
-      <workItem from="1614070439195" duration="2312000" />
+      <workItem from="1614070439195" duration="3639000" />
     </task>
     <task id="LOCAL-00001" summary="user model added">
       <created>1614075563869</created>
@@ -102,7 +115,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614075805023</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="validators">
+      <created>1614079379997</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614079379998</updated>
+    </task>
+    <task id="LOCAL-00005" summary="validators_change position">
+      <created>1614079642204</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1614079642205</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +150,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="user model added" />
-    <option name="LAST_COMMIT_MESSAGE" value="user model added" />
+    <MESSAGE value="validators" />
+    <MESSAGE value="validators_change position" />
+    <option name="LAST_COMMIT_MESSAGE" value="validators_change position" />
   </component>
 </project>
