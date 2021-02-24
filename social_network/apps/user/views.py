@@ -31,14 +31,15 @@ class UserView(View):
 
 class UserLoginView(View):
     def get(self, request):
-        form = UserLoginModelForm()
-        return render(request, 'user/user_login.html', {'form': form})
+        return render(request, 'user/index.html')
 
     def post(self, request):
-        form = UserLoginModelForm(request.POST)
-        if form.is_valid():
-            validated_data = form.cleaned_data
-            user_obj = User(**validated_data)
-            user_obj.save()
-            return redirect('ok')
-        return render(request, 'user/user_login.html', {'form': form})
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username + password)
+        if username and password:
+            user_obj = User.objects.get(email=username)
+            if user_obj.password == hashlib.sha256(password.encode('utf-8')).hexdigest():
+                return redirect('ok')
+            else:
+                return redirect('not_ok')
