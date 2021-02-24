@@ -1,0 +1,13 @@
+{% extends 'profile.html' %}
+{% block title %}My Post{% endblock %}
+{% block content %}
+    {% if post_list %}
+        <ul>
+            {% for post in post_list %}
+                <li><a href="/post/{{ post.id }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>No Post!</h1>
+    {% endif %}
+{% endblock %}

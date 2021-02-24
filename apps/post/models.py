@@ -2,6 +2,7 @@ from django.utils import timezone
 from django.utils.timezone import now
 from django.db import models
 from apps.user.models import User
+from math import floor
 
 
 class Post(models.Model):
@@ -24,13 +25,13 @@ class Post(models.Model):
         age_day = timezone.now().day - self.created_date.day
         age_hour = timezone.now().hour - self.created_date.hour
         if age_year >= 1:
-            return '{} years a go'.format(age_year.floor)
+            return '{} years a go'.format(floor(age_year))
         elif age_month >= 1:
-            return '{} months a go'.format(age_month.floor)
+            return '{} months a go'.format(floor(age_month))
         elif age_day >= 1:
-            return '{} days a go'.format(age_month.floor)
+            return '{} days a go'.format(floor(age_month))
         elif age_hour > 1:
-            return '{} hours a go'.format(age_hour.floor)
+            return '{} hours a go'.format(floor(age_hour))
         else:
             return 'recently'
 

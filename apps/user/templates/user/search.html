@@ -1,0 +1,19 @@
+{% extends 'profile.html' %}
+{% block content %}
+    <form autocomplete="on" action="">
+        <label>
+            <input placeholder="Text to search" name="search_text">
+        </label>
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% if users %}
+            <h1>search results:</h1>
+            {% for user in users %}
+                <li><a href={% url 'user_detail' user.id %}>{{ user.email }}</a></li>
+            {% endfor %}
+        {% else %}
+            <h1>No user found!</h1>
+        {% endif %}
+    </ul>
+{% endblock %}

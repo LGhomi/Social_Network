@@ -1,0 +1,31 @@
+{% extends 'profile.html' %}
+{% block title %}Paged Posts{% endblock %}
+{% block content %}
+    <table>
+        <tr>
+            <th>title</th>
+        </tr>
+        {% for post in page_obj %}
+            <tr>
+                <td><a href="/post/{{ post.id }}">{{ post.title }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <button class=blue_btn><a href="?page=1">&laquo; first</a></button>
+            <button class=blue_btn><a href="?page={{ page_obj.previous_page_number }}">previous</a></button>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <button class=blue_btn><a href="?page={{ page_obj.next_page_number }}">next</a></button>
+            <button class=blue_btn><a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></button>
+        {% endif %}
+    </span>
+    </div>
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import DetailView, ListView
 from rest_framework.generics import get_object_or_404
 
 from .forms import PostForm
@@ -27,3 +28,18 @@ class PostView(View):
 #     form = PostForm(request.POST, instance=user)
 #     if form.is_valid():
 #         form.save()
+
+
+class PostList(ListView):
+    model = Post
+    context_object_name = 'post_list'
+
+
+class PagedPostList(ListView):
+    paginate_by = 2
+    model = Post
+    template_name = 'post/paged_post_list.html'
+
+
+class PostDetail(DetailView):
+    model = Post
