@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="profile template edit and posts, add post views added.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +29,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1oqkYK1u3nj5JtZawrr00dlqI65" />
@@ -43,6 +49,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\maktabsharif\git\Social_Network" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -55,7 +70,16 @@
       <option name="presentableId" value="Default" />
       <updated>1614021554030</updated>
       <workItem from="1614021559560" duration="192000" />
+      <workItem from="1614200303777" duration="385000" />
     </task>
+    <task id="LOCAL-00001" summary="profile template edit and posts, add post views added.">
+      <created>1614200577887</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614200577887</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,14 +95,25 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="profile template edit and posts, add post views added." />
+    <option name="LAST_COMMIT_MESSAGE" value="profile template edit and posts, add post views added." />
   </component>
   <component name="WindowStateProjectService">
     <state x="462" y="125" key="FileChooserDialogImpl" timestamp="1614021732575">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="462" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1614021732575" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1614200602363">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1614200602363" />
+    <state x="458" y="96" key="git4idea.branch.GitSmartOperationDialog" timestamp="1614200442610">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="458" y="96" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.768@0.0.1366.768" timestamp="1614200442610" />
   </component>
 </project>
