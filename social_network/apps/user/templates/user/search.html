@@ -1,21 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'user/prstyle.css' %}">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
+{% block username %}
+{% endblock %}
 <form autocomplete="on" action="">
-    <input   placeholder="Text to search" name="search_text">
+    <input placeholder="Text to search" name="search_text">
     <button type="submit">Search</button>
 
 </form>
-<h1>search results</h1>
+<h1>search resultts</h1>
 <ul>
     {% for user in users %}
-        <li>
-            {{ user.email }}
-        </li>
+        <li><a href={% url 'user_detail' user.id %}>{{ user.email }}</a></li>
     {% endfor %}
 </ul>
 </body>
