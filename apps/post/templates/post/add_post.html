@@ -1,5 +1,6 @@
-{% extends 'profile.html' %}
+{% extends 'user/profile.html' %}
 {% block title %}Add Post{% endblock %}
+{% block header%}{{ username }}{% endblock %}
 {% block content %}
     <form action="" method="post">
         {% csrf_token %}

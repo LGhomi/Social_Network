@@ -1,4 +1,4 @@
-"""social_network URL Configuration
+"""socialwebsite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -13,9 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('apps.user.urls')),
+    path('post/', include('apps.post.urls')),
+    path('common/', include([
+        # path('profile/', TemplateView.as_view(template_name='profile.html'), name='profile'),
+        path('not-ok/', TemplateView.as_view(template_name='not_ok.html'), name='not_ok'),
+        path('ok/', TemplateView.as_view(template_name='ok.html'), name='ok'),
+    ]
+    ), )
 ]

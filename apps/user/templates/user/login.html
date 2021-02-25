@@ -10,7 +10,7 @@
 <div class="login">
     <br>
     <h class="text">To Share :)</h>
-    <div class="message"><p>{{ message }}</p></div>
+    <div class="message"><p>{{ user }}{{ message }}</p></div>
     <form method="post" class="login_form">
         {% csrf_token %}
         <label>

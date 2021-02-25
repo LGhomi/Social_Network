@@ -1,10 +1,10 @@
 {% extends 'user/profile.html' %}
-{% block title %}My Post{% endblock %}
-{% block header %}{{ username }}{% endblock %}
+{% block title %}My Posts{% endblock %}
+{% block header%}{{ username }}{% endblock %}
 {% block content %}
-    {% if post_list %}
+    {% if my_post_list %}
         <ul>
-            {% for post in post_list %}
+            {% for post in my_post_list %}
                 <li><a href="/post/{{ post.id }}">{{ post.title }}</a></li>
             {% endfor %}
         </ul>

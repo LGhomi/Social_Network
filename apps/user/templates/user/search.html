@@ -1,4 +1,5 @@
-{% extends 'profile.html' %}
+{% extends 'user/profile.html' %}
+{% block header%}{{ username }}{% endblock %}
 {% block content %}
     <form autocomplete="on" action="">
         <label>

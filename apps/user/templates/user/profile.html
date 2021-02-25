@@ -8,16 +8,20 @@
 </head>
 <body>
 <header>
-    <span>{{ username }}</span>
+    {% block username %}
+    {{username}}
+    {% endblock %}
 </header>
 <nav class="header">
     <ul style="display: flex; justify-content: space-around">
         {#        <li><a href="{% url 'logout' %}">Logout</a></li>#}
         {#        <li><a href="{% url 'posts' %}">My Posts</a></li>#}
-        <li><a href="{% url 'paged_post_list' %}">My Posts</a></li>
+        {#        <li><a href="{% url 'paged_post_list' %}">My Posts</a></li>#}
+        <li><a href="{% url 'my_post_list' %}">My Posts</a></li>
         <li><a href="{% url 'add_new_post' %}">ADD New Post</a></li>
         <li><a href="{% url 'search' %}">Search</a></li>
-{#        <li><a href="{% url 'search' %}"></a><img src="./search.png" style="height: 40px; width: 40px;"></li>#}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {#        <li><a href="{% url 'search' %}"></a><img src="./search.png" style="height: 40px; width: 40px;"></li>#}
     </ul>
 </nav>
 <aside>

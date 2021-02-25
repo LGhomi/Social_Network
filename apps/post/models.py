@@ -1,6 +1,8 @@
 from django.utils import timezone
 from django.utils.timezone import now
 from django.db import models
+
+# from apps.post.managers import PostManager
 from apps.user.models import User
 from math import floor
 
@@ -12,6 +14,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=now)
     user_id = models.ForeignKey('user.User', on_delete=models.CASCADE)
 
+    # objects = PostManager()
     class Meta:
         ordering = ['-created_date']
 
@@ -29,8 +32,8 @@ class Post(models.Model):
         elif age_month >= 1:
             return '{} months a go'.format(floor(age_month))
         elif age_day >= 1:
-            return '{} days a go'.format(floor(age_month))
-        elif age_hour > 1:
+            return '{} days a go'.format(floor(age_day))
+        elif age_hour >= 1:
             return '{} hours a go'.format(floor(age_hour))
         else:
             return 'recently'
