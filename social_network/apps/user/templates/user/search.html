@@ -1,19 +1,11 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'user/prstyle.css' %}">
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-
-<body>
-{% block username %}
-{% endblock %}
 <form autocomplete="on" action="">
-    <input placeholder="Text to search" name="search_text">
-    <button type="submit">Search</button>
-
+<input type="text" list="user_list" placeholder="Text to search" name="search_text">
+<datalist id="user_list">
+    {% for result in results %}
+        <option value="{{ result.email }}">
+    {% endfor %}
+</datalist>
+<button type="submit">Search</button>
 </form>
 <h1>search resultts</h1>
 <ul>
@@ -21,5 +13,3 @@
         <li><a href={% url 'user_detail' user.id %}>{{ user.email }}</a></li>
     {% endfor %}
 </ul>
-</body>
-</html>

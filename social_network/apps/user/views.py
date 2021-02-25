@@ -20,9 +20,10 @@ class Search(View):
     def get(self, request):
         search_text = request.GET.get('search_text')
         users = None
+        results = User.objects.all
         if search_text:
             users = User.objects.filter(email__icontains=search_text)
-        return render(request, 'profile.html', {'users': users})
+        return render(request, 'user/search.html', {'users': users, "results": results})
 
 
 class UserView(View):
