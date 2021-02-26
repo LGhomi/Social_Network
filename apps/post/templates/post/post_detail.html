@@ -1,0 +1,13 @@
+{% extends 'user/profile.html' %}
+{% block title %}Post Detail{% endblock %}
+{% block content %}
+    <table>
+        <tr>{{ post.title }}</tr>
+        </br>
+        <tr>{{ post.content }}</tr>
+        </br>
+        <tr>{{ post.image }}</tr>
+        </br>
+        <tr>{{ post.age }}</tr>
+    </table>
+{% endblock %}

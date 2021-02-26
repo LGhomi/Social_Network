@@ -19,8 +19,44 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="final profile (991206)">
+      <change afterPath="$PROJECT_DIR$/apps/post/managers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/post/templates/post/my_post_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/user/migrations/0002_user_active.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/user/templates/user/logout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/validators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/socialwebsite/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/post/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/add_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/add_post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/paged_post_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/paged_post_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/post_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/post_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/post_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/post/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/post/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/templates/user/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/user_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/templates/user/user_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/.idea/social_network.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/social_network/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/social_network/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/socialwebsite/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/social_network/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/socialwebsite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/social_network/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/socialwebsite/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_network/social_network/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/socialwebsite/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/not_ok.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/not_ok.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ok.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ok.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/templates/user/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +64,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1oqkYK1u3nj5JtZawrr00dlqI65" />
@@ -43,6 +84,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\maktabsharif\git\Social_Network" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -55,7 +105,25 @@
       <option name="presentableId" value="Default" />
       <updated>1614021554030</updated>
       <workItem from="1614021559560" duration="192000" />
+      <workItem from="1614200303777" duration="516000" />
+      <workItem from="1614252314524" duration="951000" />
+      <workItem from="1614278058610" duration="312000" />
     </task>
+    <task id="LOCAL-00001" summary="profile template edit and posts, add post views added.">
+      <created>1614200577887</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614200577887</updated>
+    </task>
+    <task id="LOCAL-00002" summary="final profile (991206)">
+      <created>1614200739931</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614200739931</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,14 +139,26 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="profile template edit and posts, add post views added." />
+    <MESSAGE value="final profile (991206)" />
+    <option name="LAST_COMMIT_MESSAGE" value="final profile (991206)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="462" y="125" key="FileChooserDialogImpl" timestamp="1614021732575">
+    <state x="462" y="125" key="FileChooserDialogImpl" timestamp="1614253328576">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="462" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1614021732575" />
+    <state x="462" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1614253328576" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1614200752457">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1614200752457" />
+    <state x="458" y="96" key="git4idea.branch.GitSmartOperationDialog" timestamp="1614200442610">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="458" y="96" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.768@0.0.1366.768" timestamp="1614200442610" />
   </component>
 </project>
