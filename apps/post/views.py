@@ -9,12 +9,20 @@ from ..user.models import User
 
 
 class PostView(View):
+    """
+    add new post
+    """
+
     def get(self, request):
         user = User.objects.get(active=True)
         form = PostForm()
         return render(request, 'post/add_post.html', {'form': form, 'username': user.email})
 
     def post(self, request):
+        """
+        :param request: request for create new post
+        :return: save post and send username to template
+        """
         user = User.objects.get(active=True)
         form = PostForm(request.POST)
         if form.is_valid():
@@ -25,36 +33,36 @@ class PostView(View):
         return render(request, 'post/add_post.html', {'form': form, 'username': user.email})
 
 
-# def add_post(request, user_id):
-#     user = get_object_or_404(User, pk=user_id)
-#     form = PostForm(request.POST, instance=user)
-#     if form.is_valid():
-#         form.save()
-
-
 class PostList(ListView):
+    """
+    class view of post return all posts
+    """
     model = Post
     context_object_name = 'post_list'
 
 
 class MyPostList(View):
     def get(self, request):
+        """
+        :param request: request to show user's posts
+        :return: title list of user's posts
+        """
         user = User.objects.get(active=True)
         my_post_list = Post.objects.filter(user_id=user.pk)
-        context = {'my_post_list': my_post_list, 'username':user.email}
+        context = {'my_post_list': my_post_list, 'username': user.email}
         return render(request, 'post/my_post_list.html', context)
-
-    # def head(self, request):
-    #     response = HttpResponse()
-    #     response['person_count'] = Person.objects.count()
-    #     return response
 
 
 class PagedPostList(ListView):
+    """
+    pagination all posts
+    """
     paginate_by = 2
-    model = Post
     template_name = 'post/paged_post_list.html'
 
 
 class PostDetail(DetailView):
+    """
+    show detail of post.
+    """
     model = Post

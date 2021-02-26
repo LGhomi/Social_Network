@@ -1,7 +1,5 @@
 from django.core.exceptions import ValidationError
-
-
-# from django.core.validators import validate_email
+import re
 
 
 def mobile_validator(mobile):
@@ -18,6 +16,8 @@ def validate_not_empty(value):
     if value == '':
         raise ValidationError('{} is empty!'.format(value))
 
-# def email_validator(email):
-#     if validate_email(email):
-#         raise ValidationError("Enter a valid e-mail address.")
+
+def email_validator(email):
+    EMAIL_REGEX = re.compile(r'^[a-z]+[a-zA-Z0-9.+_-]*@[a-zA-Z0-9]+\.[a-zA-Z]+$')
+    if not EMAIL_REGEX.match(email):
+        raise ValidationError('Invalid Email Address!')

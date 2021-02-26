@@ -9,10 +9,10 @@ from math import floor
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField(null=True, blank=True)
+    content = models.TextField()
     image = models.ImageField(null=True, blank=True)
     created_date = models.DateTimeField(default=now)
-    user_id = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    user_id = models.ForeignKey('user.User', on_delete=models.CASCADE,limit_choices_to={'active': 'True'})
 
     # objects = PostManager()
     class Meta:
@@ -23,6 +23,10 @@ class Post(models.Model):
 
     @property
     def age(self):
+        """
+        get created date that Automatic save
+        :return: How long the post has been published.
+        """
         age_year = timezone.now().year - self.created_date.year
         age_month = timezone.now().month - self.created_date.month
         age_day = timezone.now().day - self.created_date.day
@@ -61,4 +65,4 @@ class Like(models.Model):
         ordering = ['-created_date']
 
     def __str__(self):
-        return self.user_id
+        return str(self.user_id)
