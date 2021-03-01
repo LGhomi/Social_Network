@@ -57,7 +57,7 @@ aside {
     justify-content: left;
 }
 
-aside div ul {
+aside .sidebar ul {
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -66,9 +66,10 @@ aside div ul {
     list-style-type: none;
 }
 
-aside div ul li {
+aside .sidebar ul li {
     font-size: large;
     text-decoration: none;
+    margin-top: 20px;
 }
 
 aside div h2 {

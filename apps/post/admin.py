@@ -7,7 +7,7 @@ from apps.post.models import Post, Comment, Like
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'content', 'image']
+    list_display = ['title', 'content', 'image', 'user_id']
     readonly_fields = ['created_date']
 
 

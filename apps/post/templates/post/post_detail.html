@@ -1,13 +1,19 @@
 {% extends 'user/profile.html' %}
+{% load post_custom_tags %}
 {% block title %}Post Detail{% endblock %}
 {% block content %}
     <table>
-        <tr>{{ post.title }}</tr>
+        <tr>Title: {{ post.title }}</tr>
         </br>
-        <tr>{{ post.content }}</tr>
+        <tr>Content: {{ post.content }}</tr>
+{#        </br>#}
+{#        <tr>{{ post.image }}</tr>#}
         </br>
-        <tr>{{ post.image }}</tr>
-        </br>
-        <tr>{{ post.age }}</tr>
+        <tr>Age: {{ post.age }}</tr>
+    </br>
+         </br>
+        <tr>likes:{% l_cnt post.pk %}</tr>
+    </br>
+        <tr>Comments:{% show_comments post.pk %}</tr>
     </table>
 {% endblock %}
