@@ -1,0 +1,7 @@
+{% if posts %}
+    {% for post in posts %}
+        <li><a href="{% url 'post_detail' post.id %}"> {{ post.title }}</a></li>
+    {% endfor %}
+{% else %}
+    <span>No Posts!</span>
+{% endif %}

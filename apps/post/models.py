@@ -47,13 +47,13 @@ class Comment(models.Model):
     note = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=now)
     post_id = models.ForeignKey('Post', on_delete=models.CASCADE)
-    user_id = models.OneToOneField('user.User', on_delete=models.CASCADE)
+    user_id = models.ForeignKey('user.User', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created_date']
 
     def __str__(self):
-        return self.note[:20]
+        return self.note
 
 
 class Like(models.Model):
@@ -63,6 +63,14 @@ class Like(models.Model):
 
     class Meta:
         ordering = ['-created_date']
+        unique_together = ('post_id', 'user_id',)
 
     def __str__(self):
-        return str(self.user_id)
+        return str(self.user_id) +" "+"liked"+" "+ str(self.post_id)
+
+
+# from apps.post.models import Post,Like
+# j=Like(post_id_id=1,user_id_id=2)
+# j.save()
+# j
+# <Like: mobinamirzaee74@gmail.com7 liked malihe>

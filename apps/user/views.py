@@ -1,11 +1,12 @@
 import hashlib
 
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import DetailView, ListView
 
-from apps.user.form import RegisterUserModelForm, UserLoginModelForm
-from apps.user.models import User
+from apps.user.form import RegisterUserModelForm
+from apps.user.models import User, Following
 
 
 class UserList(ListView):
@@ -124,3 +125,44 @@ class UserName(View):
         user = User.objects.get(active=True)
         username = user.email
         return render(request, 'user/profile.html', {'username': username})
+
+
+# class follow(View):
+#
+#     def get(self, request):
+#         from_user = User.objects.get(active=True)
+#         username = user.email
+#         return render(request, 'user/profile.html', {'username': username})
+
+
+def follow(request, pk):
+    main_user = User.objects.get(active=True)
+    to_follow = User.objects.get(pk=pk)
+    following = Following.objects.filter(user=main_user, followed=to_follow)
+    followerr = Following.objects.filter(user=to_follow, follower=main_user)
+    is_following = True if following else False
+    is_followerr = True if followerr else False
+
+    if not is_following:
+        Following.follow(main_user, to_follow)
+
+    if not is_followerr:
+        Following.follow_back(to_follow,main_user)
+
+    return redirect('user_detail', pk=pk)
+
+
+class followers_list(View):
+    def get(self, request):
+        person = User.objects.get(active=True)
+        users = person.follower.all()
+        context = {'users': users, 'username': person.email}
+        return render(request, 'user/follower_list.html', context)
+
+
+class following_list(View):
+    def get(self, request):
+        person = User.objects.get(active=True)
+        users = person.followed.all()
+        context = {'users': users, 'username': person.email}
+        return render(request, 'user/followed_list.html', context)
