@@ -1,0 +1,30 @@
+{% extends 'user/profile.html' %}
+{% load post_custom_tags %}
+{% block title %}Post Detail{% endblock %}
+{% block content %}
+    <table>
+        <tr>Title: {{ post.title }}</tr>
+        </br>
+        <tr>Content: {{ post.content }}</tr>
+        {#        </br>#}
+        {#        <tr>{{ post.image }}</tr>#}
+        </br>
+        <tr>Age: {{ post.age }}</tr>
+        </br>
+        </br>
+        <tr>likes:{% l_cnt post.pk %}</tr>
+        </br>
+        <tr>Comments:{% show_comments post.pk %}</tr>
+    </table>
+
+
+    <button id="demo"><a type="button" class="button-caballo" role="button"
+                         href="{% url 'like' post.pk %}">Like</a></button>
+
+    <form method="post" action="{% url 'comment' post.pk %}">
+        {% csrf_token %}
+        <input placeholder=" comment" type="text" name="note">
+        <button type="submit" value="comment_btn" >comment</button>
+    </form>
+
+{% endblock %}

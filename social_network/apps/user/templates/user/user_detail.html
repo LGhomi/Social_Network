@@ -1,6 +1,16 @@
-
+{% extends 'user/profile.html' %}
+{% load post_custom_tags %}
 {% block content %}
     <div>{{ object.email }}</div>
-    <div>{{ object.first_name }}</div>
+    {#    <button></button>#}
+    <button onclick="myFunction()" id="demo"><a type="button" class="button-caballo" role="button"
+                                                href="{% url 'follow' user.pk %}">Follow</a></button>
 
+    <div>{% user_post object.pk %}</div>
+
+    <script>
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Hello World";
+        }
+    </script>
 {% endblock %}
