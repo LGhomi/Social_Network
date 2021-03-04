@@ -1,10 +1,12 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 from django.views.generic import DetailView, ListView
 from rest_framework.generics import get_object_or_404
 
 from .forms import PostForm
-from .models import Post
+from .models import Post, Like, Comment
 from ..user.models import User
 
 
@@ -66,4 +68,68 @@ class PostDetail(DetailView):
     show detail of post.
     """
     model = Post
+
+
+class UserName(View):
+    """
+    To display each user's name in their profile
+    """
+
+    def get(self, request):
+        user = User.objects.get(active=True)
+        username = user.email
+        return render(request, 'user/profile.html', {'username': username})
+
+
+def like(request, pk):
+    """
+
+    Like other users' posts
+    """
+    main_user = User.objects.get(active=True)
+    to_like = Post.objects.get(pk=pk)
+    if Like.objects.filter(post_id_id=to_like.id, user_id_id=main_user.id):
+        return redirect('post_detail', pk=pk)
+    else:
+        like = Like(post_id_id=to_like.id, user_id_id=main_user.id)
+        like.save()
+        return redirect('post_detail', pk=pk)
+
+
+class AddComment(View):
+    """
+
+Leave a comment for other users' posts
+    """
+
+    def post(self, request, pk):
+        user_obj = User.objects.get(active=True)
+        to_comment = Post.objects.get(pk=pk)
+        note = request.POST.get("note")
+        # is_comment = request.POST.get("comment_btn")
+        print(note)
+        if note:
+            comment = Comment.objects.create(note=note, post_id_id=to_comment.id, user_id_id=user_obj.id)
+            comment.save()
+        return redirect('post_detail', pk=pk)
+
+
+class FollowingPost(View):
+    """
+    Each user can see other users' posts in their profile
+    """
+    def get(self, request):
+        posts = []
+        person = User.objects.get(active=True)
+        following = person.followed.all()
+        if following:
+            for f in following:
+                f1 = User.objects.get(email=f)
+                for post in f1.post_set.all():
+                    posts.append(post)
+            context = {'posts': posts, 'username': person.email}
+            return render(request, 'post/following_post.html', context)
+        else:
+            return render(request, 'post/following_post.html')
+
 

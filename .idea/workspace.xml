@@ -19,43 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="final profile (991206)">
-      <change afterPath="$PROJECT_DIR$/apps/post/migrations/0002_auto_20210301_1203.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/post/migrations/0003_auto_20210301_1206.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/post/templates/post/post_comments.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/post/templates/post/user_post.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/migrations/0002_remove_user_friends.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/migrations/0003_friendrequest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/migrations/0004_auto_20210227_1935.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/migrations/0006_auto_20210227_2223.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/migrations/0007_user_view_profile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/migrations/0008_auto_20210301_1203.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/templates/user/follow.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/templatetags/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/user/templatetags/user_custom_tags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templatetags/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templatetags/custom_tags.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/managers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/paged_post_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/paged_post_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/post_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templatetags/post_custom_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templatetags/post_custom_tags.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0002_user_active.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/migrations/0005_user_view_profile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/static/user/pro_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/static/user/pro_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/templates/user/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/templates/user/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/user_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/templates/user/user_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/templates/user/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/validators.py" afterDir="false" />
-    </list>
+    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="write count post, likes and show comments, username, posts of search user." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,7 +71,7 @@
       <workItem from="1614200303777" duration="516000" />
       <workItem from="1614252314524" duration="951000" />
       <workItem from="1614278058610" duration="312000" />
-      <workItem from="1614610175133" duration="434000" />
+      <workItem from="1614610175133" duration="601000" />
     </task>
     <task id="LOCAL-00001" summary="profile template edit and posts, add post views added.">
       <created>1614200577887</created>
@@ -123,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614200739931</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="write count post, likes and show comments, username, posts of search user.">
+      <created>1614610765356</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614610765356</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,17 +116,18 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="profile template edit and posts, add post views added." />
     <MESSAGE value="final profile (991206)" />
-    <option name="LAST_COMMIT_MESSAGE" value="final profile (991206)" />
+    <MESSAGE value="write count post, likes and show comments, username, posts of search user." />
+    <option name="LAST_COMMIT_MESSAGE" value="write count post, likes and show comments, username, posts of search user." />
   </component>
   <component name="WindowStateProjectService">
     <state x="462" y="125" key="FileChooserDialogImpl" timestamp="1614253328576">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="462" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1614253328576" />
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1614200752457">
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1614610769350">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1614200752457" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1614610769350" />
     <state x="458" y="96" key="git4idea.branch.GitSmartOperationDialog" timestamp="1614610330088">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

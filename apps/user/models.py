@@ -38,24 +38,13 @@ class User(models.Model):
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
 
-# class FriendRequest(models.Model):
-#     to_user = models.ForeignKey(User, related_name='to_user', on_delete=models.PROTECT)
-#     from_user = models.ForeignKey(User, related_name='from_user', on_delete=models.PROTECT)
-#     created = models.DateTimeField(auto_now_add=True, blank=True)
-#
-#     def __str__(self):
-#         return "From {}, to {}".format(self.from_user, self.to_user)
-#
-#     class Meta:
-#         ordering = ['-created']
-
-# f=FriendRequest(to_user=User.objects.get(id=3),from_user=User.objects.get(id=4))
-# f
-# <FriendRequest: From mobinamirzaee74@gmail.com, to malihemirzaee74@gmail.com>
 class Following(models.Model):
+    """
+    This class represents relationship between Users of the website.
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    followed = models.ManyToManyField(User, related_name="followed")
-    follower = models.ManyToManyField(User, related_name="follower")
+    follower = models.ManyToManyField(User, related_name="followed")
+    followed = models.ManyToManyField(User, related_name="follower")
 
     @classmethod
     def follow(cls, user, another_account):
@@ -76,4 +65,4 @@ class Following(models.Model):
     #     print("unfollowed")
 
     def __str__(self):
-        return f'{self.user.email} Profile'
+        return self.user.email

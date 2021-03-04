@@ -48,7 +48,7 @@ class Comment(models.Model):
     note = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=now)
     post_id = models.ForeignKey('Post', on_delete=models.CASCADE)
-    user_id = models.OneToOneField('user.User', on_delete=models.CASCADE)
+    user_id = models.ForeignKey('user.User', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created_date']
@@ -67,4 +67,6 @@ class Like(models.Model):
         unique_together = ('post_id', 'user_id',)
 
     def __str__(self):
-        return str(self.user_id)
+        return str(self.user_id) +" "+"liked"+" "+ str(self.post_id)
+
+
