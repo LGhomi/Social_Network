@@ -1,11 +1,12 @@
 import hashlib
 
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import DetailView, ListView
 
-from apps.user.form import RegisterUserModelForm, UserLoginModelForm
-from apps.user.models import User
+from apps.user.form import RegisterUserModelForm
+from apps.user.models import User, Following
 
 
 class UserList(ListView):
@@ -124,3 +125,57 @@ class UserName(View):
         user = User.objects.get(active=True)
         username = user.email
         return render(request, 'user/profile.html', {'username': username})
+
+
+# class follow(View):
+#
+#     def get(self, request):
+#         from_user = User.objects.get(active=True)
+#         username = user.email
+#         return render(request, 'user/profile.html', {'username': username})
+
+
+def follow(request, pk):
+    """
+    :param request: request from user who is login
+    :param pk: id of the user that login user want to follow
+    :return: add to Following and then redirect to previous page
+    """
+    main_user = User.objects.get(active=True)
+    to_follow = User.objects.get(pk=pk)
+    following = Following.objects.filter(user=main_user, followed=to_follow)
+    followerr = Following.objects.filter(user=to_follow, follower=main_user)
+    is_following = True if following else False
+    is_followerr = True if followerr else False
+
+    if not is_following:
+        Following.follow(main_user, to_follow)
+
+    if not is_followerr:
+        Following.follow_back(to_follow, main_user)
+
+    return redirect('user_detail', pk=pk)
+
+
+class FollowersList(View):
+    """
+    Each user can see their list of followers
+    """
+
+    def get(self, request):
+        person = User.objects.get(active=True)
+        users = person.follower.all()
+        context = {'users': users, 'username': person.email}
+        return render(request, 'user/follower_list.html', context)
+
+
+class FollowingList(View):
+    """
+    Each user can see their list of following
+    """
+
+    def get(self, request):
+        person = User.objects.get(active=True)
+        users = person.followed.all()
+        context = {'users': users, 'username': person.email}
+        return render(request, 'user/followed_list.html', context)
