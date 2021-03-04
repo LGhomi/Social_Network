@@ -1,0 +1,20 @@
+{% extends 'user/profile.html' %}
+{% block title %}follower{% endblock %}
+{% block header %}{{ username }}{% endblock %}
+{% block content %}
+
+    {% if users %}
+        <p>following</p>
+        <ul>
+        <ul>
+            {% for user in users %}
+                <li><a href={% url 'user_detail' user.user_id %}>{{ user}}</a></li>
+            {% endfor %}
+        </ul>
+
+        </ul>
+    {% else %}
+        <h1>No following!</h1>
+    {% endif %}
+{% endblock %}
+

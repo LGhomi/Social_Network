@@ -5,11 +5,11 @@
     <title>User</title>
 </head>
 <body>
-    <h2>users</h2>
-    <ul>
-        {% for user in user_list %}
-            <li><a href={% url 'user_detail' user.id %}>{{ user.email }}</a> </li>
-        {% endfor %}
-    </ul>
+<h2>users</h2>
+<ul>
+    {% for user in user_list %}
+        <li><a href={% url 'user_detail' user.id %}>{{ user.email }}</a></li>
+    {% endfor %}
+</ul>
 </body>
 </html>
