@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="final profile (991206)">
+    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="phase 2.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,18 +50,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\maktabsharif\git\Social_Network" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -76,7 +72,6 @@
       <workItem from="1614200303777" duration="516000" />
       <workItem from="1614252314524" duration="951000" />
       <workItem from="1614278058610" duration="312000" />
-      <workItem from="1614614773989" duration="1833000" />
     </task>
     <task id="LOCAL-00001" summary="profile template edit and posts, add post views added.">
       <created>1614200577887</created>
@@ -92,11 +87,18 @@
       <option name="project" value="LOCAL" />
       <updated>1614200739931</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="phase 2.">
+      <created>1614883120077</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614883120077</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -114,17 +116,27 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="profile template edit and posts, add post views added." />
     <MESSAGE value="final profile (991206)" />
-    <option name="LAST_COMMIT_MESSAGE" value="final profile (991206)" />
+    <MESSAGE value="phase 2." />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 2." />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="462" y="125" key="FileChooserDialogImpl" timestamp="1614253328576">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="462" y="125" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1614253328576" />
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1614200752457">
+    <state x="205" y="58" key="MergeDialog" timestamp="1614883538811">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1614200752457" />
+    <state x="205" y="58" key="MergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1614883538811" />
+    <state x="564" y="249" width="389" height="269" key="MultipleFileMergeDialog" timestamp="1614883534319">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="564" y="249" width="389" height="269" key="MultipleFileMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1614883534319" />
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2" timestamp="1614883128392">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="116" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1614883128392" />
     <state x="458" y="96" key="git4idea.branch.GitSmartOperationDialog" timestamp="1614200442610">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
