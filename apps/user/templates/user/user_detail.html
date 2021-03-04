@@ -1,16 +1,5 @@
 {% extends 'user/profile.html' %}
-{% load post_custom_tags %}
 {% block content %}
     <div>{{ object.email }}</div>
-
-    <button id="button" value="buiiitton" style="color:white"><a type="button"
-                                                              class="button-caballo"
-                                                              role="button"
-                                                              href="{% url 'follow' object.pk %}">Follow</a>
-    </button>
-
-    <div>{% user_post object.pk %}</div>
-
-
-
+    <div>{{ object.first_name }}</div>
 {% endblock %}

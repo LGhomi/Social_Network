@@ -27,11 +27,10 @@ class Post(models.Model):
         get created date that Automatic save
         :return: How long the post has been published.
         """
-        age = timezone.now() - self.created_date
-        age_year = age.days/365
-        age_month = age.days/30
-        age_day = age.days
-        age_hour = (age.seconds/60)/60
+        age_year = timezone.now().year - self.created_date.year
+        age_month = timezone.now().month - self.created_date.month
+        age_day = timezone.now().day - self.created_date.day
+        age_hour = timezone.now().hour - self.created_date.hour
         if age_year >= 1:
             return '{} years a go'.format(floor(age_year))
         elif age_month >= 1:
@@ -48,13 +47,13 @@ class Comment(models.Model):
     note = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=now)
     post_id = models.ForeignKey('Post', on_delete=models.CASCADE)
-    user_id = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    user_id = models.OneToOneField('user.User', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created_date']
 
     def __str__(self):
-        return self.note
+        return self.note[:20]
 
 
 class Like(models.Model):
@@ -64,9 +63,6 @@ class Like(models.Model):
 
     class Meta:
         ordering = ['-created_date']
-        unique_together = ('post_id', 'user_id',)
 
     def __str__(self):
-        return str(self.user_id) +" "+"liked"+" "+ str(self.post_id)
-
-
+        return str(self.user_id)
