@@ -3,17 +3,18 @@
 {% block header %}{{ username }}{% endblock %}
 {% block content %}
 
-    {% if posts %}
-        <p>following posts</p>
+    {% if users %}
+        <p>following</p>
         <ul>
         <ul>
-            {% for p in posts %}
-                <li><a href={% url 'post_detail' p.id %}>{{ p}}</a></li>
+            {% for account in users %}
+                <li><a href={% url 'user_detail' account.user_id %}>{{ account}}</a></li>
             {% endfor %}
         </ul>
 
         </ul>
     {% else %}
-        <h1>No posts!</h1>
+        <h1>No following!</h1>
     {% endif %}
 {% endblock %}
+

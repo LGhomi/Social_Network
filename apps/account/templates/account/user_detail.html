@@ -1,0 +1,16 @@
+{% extends 'account/profile.html' %}
+{% load post_custom_tags %}
+{% block content %}
+{#    <div>{{ object.email }}</div>#}
+
+{#    <button id="button" value="buiiitton" style="color:white"><a type="button"#}
+{#                                                              class="button-caballo"#}
+{#                                                              role="button"#}
+{#                                                              href="{% url 'follow' object.pk %}">Follow</a>#}
+{#    </button>#}
+    <p>{{user}}</p> <a href="/send_friend_request/{{ user.id }}">send request</a>
+    <div>{% user_post user %}</div>
+
+
+
+{% endblock %}

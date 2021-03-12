@@ -1,0 +1,47 @@
+{% load static %}
+{% load user_tags %}
+{% load post_custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'user/pro_style.css' %}">
+    <meta charset="UTF-8">
+    <title>{% block title %}Profile{% endblock %}</title>
+</head>
+<body>
+<header>{{ request.user.email }}</header>
+<nav class="header">
+    <ul style="display: flex; justify-content: space-around">
+        <li><a href="{% url 'add_new_post' %}">ADD New Post</a></li>
+        <li><a href="{% url 'search' %}">Search</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="{% url 'edit' request.user.id %}">edit profile</a></li>
+        <li><a href="{% url 'following_post' %}">Posts</a></li>
+        <li><a href="{% url 'changepass' %}">change pass</a></li>
+
+    </ul>
+</nav>
+<aside>
+    <div class="sidebar">
+        <ul>
+            <li><a href="{% url 'my_follower' %}">Followers :{% follower_cnt request %}</a></li>
+            <li><a href="{% url 'my_following' %}">Following :{% following_cnt request %}</a></li>
+            <li><a href="{% url 'my_post_list' %}">My Posts :{% p_cnt request.user.id %}</a></li>
+            <li><a href="{% url 'Request_List' %}">requests</a></li>
+        </ul>
+    </div>
+</aside>
+<main>
+    <div class="main">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+<footer class="footer">
+    <ul>
+        <li></li>
+        <li></li>
+    </ul>
+</footer>
+</body>
+</html>

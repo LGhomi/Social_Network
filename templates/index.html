@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/style.css' %}">
+    <title> User Login</title>
+</head>
+<body>
+<div class="login">
+    <br>
+    {#    <div class="message"><p>{{ account }} {{ message }}</p></div>#}
+    {#    {% if account.is_authenticated %}#}
+    {#        <form action="" method="post">#}
+    {#            {% csrf_token %}#}
+    {#            <input type="submit" name="logout" value="logout">#}
+    {#        <button type="submit">logout</button>#}
+    {#        </form>#}
+    {#        <li><a href="{% url 'add_new_post' %}">Add Post</a></li>#}
+    {#    {% else %}#}
+    <h class="text">To Share :)</h>
+    <form method="post" class="login_form">
+        {% csrf_token %}
+        <label>
+            <input class="log_input" placeholder=" email" type="text" name="username">
+        </label>
+        <br>
+        <label>
+            <input class="log_input" placeholder=" password" type="password" name="password">
+        </label>
+        <br>
+        <input type="submit" value="log in" class="log_in">
+    </form>
+    <a href="#" class="forgot_pass">Forgot Password?</a>
+    {#    {% endif %}#}
+    <div class="sign_up"><br> &nbsp;Don't have an account? <br><a href={% url "register" %}> Sign up</a></div>
+</div>
+
+</body>
+</html>

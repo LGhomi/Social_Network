@@ -1,23 +1,14 @@
 from django import template
 
 from ..models import Post
-from ...user.models import User
 
 register = template.Library()
 
 
 @register.simple_tag(name='p_cnt')
-def count_post():
+def count_post(id):
     "count posts of user"
-    obj = User.objects.get(active=True)
-    return Post.objects.filter(user_id=obj.pk).count()
-
-
-@register.simple_tag(name='username')
-def username():
-    "return username of login user"
-    obj = User.objects.get(active=True)
-    return obj.email
+    return Post.objects.filter(account_id=id).count()
 
 
 @register.simple_tag(name='l_cnt')
@@ -36,8 +27,7 @@ def show_comments(pk):
 
 
 @register.inclusion_tag('post/user_post.html')
-def user_post(pk):
+def user_post(user):
     "show post of user"
-    user = User.objects.get(pk=pk)
     posts = user.post_set.all()
     return {'posts': posts}

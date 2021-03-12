@@ -1,0 +1,22 @@
+{% extends 'account/profile.html' %}
+{% block title %}follower{% endblock %}
+{% block header %}{{ username }}{% endblock %}
+{% block content %}
+
+    {% if users %}
+        <p>requests </p>
+        <ul>
+
+            {% for request in users %}
+                <h1>{{ request.from_user }}</h1>
+                <li><a href="/accept_friend_request/{{ request.id }}">accept</a></li>
+
+            {% endfor %}
+
+
+        </ul>
+    {% else %}
+        <h1>No request!</h1>
+    {% endif %}
+{% endblock %}
+

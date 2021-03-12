@@ -1,46 +1,13 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from django.views.generic import DetailView, ListView
-from rest_framework.generics import get_object_or_404
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from .forms import PostForm
 from .models import Post, Like, Comment
-from ..user.models import User
-
-
-class PostView(View):
-    """
-    add new post
-    """
-
-    def get(self, request):
-        user = User.objects.get(active=True)
-        form = PostForm()
-        return render(request, 'post/add_post.html', {'form': form, 'username': user.email})
-
-    def post(self, request):
-        """
-        :param request: request for create new post
-        :return: save post and send username to template
-        """
-        user = User.objects.get(active=True)
-        form = PostForm(request.POST)
-        if form.is_valid():
-            validated_data = form.cleaned_data
-            post_obj = Post(**validated_data)
-            post_obj.save()
-            return redirect('ok')
-        return render(request, 'post/add_post.html', {'form': form, 'username': user.email})
-
-
-class PostList(ListView):
-    """
-    class view of post return all posts
-    """
-    model = Post
-    context_object_name = 'post_list'
+from ..account.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 
 class MyPostList(View):
@@ -49,18 +16,10 @@ class MyPostList(View):
         :param request: request to show user's posts
         :return: title list of user's posts
         """
-        user = User.objects.get(active=True)
-        my_post_list = Post.objects.filter(user_id=user.pk)
-        context = {'my_post_list': my_post_list, 'username': user.email}
+        user = request.user
+        my_post_list = Post.objects.filter(account_id=user)
+        context = {'my_post_list': my_post_list}
         return render(request, 'post/my_post_list.html', context)
-
-
-class PagedPostList(ListView):
-    """
-    pagination all posts
-    """
-    paginate_by = 2
-    template_name = 'post/paged_post_list.html'
 
 
 class PostDetail(DetailView):
@@ -70,15 +29,53 @@ class PostDetail(DetailView):
     model = Post
 
 
-class UserName(View):
+class PostView(LoginRequiredMixin, CreateView):
     """
-    To display each user's name in their profile
+    add new post
     """
 
-    def get(self, request):
-        user = User.objects.get(active=True)
-        username = user.email
-        return render(request, 'user/profile.html', {'username': username})
+    form_class = PostForm
+    template_name = 'post/add_post.html'
+    success_url = '/profile/'
+
+    def post(self, request):
+        """
+        :param request: request for create new post
+        :return: save post and send username to template
+        """
+
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = Post(**form.cleaned_data, account_id=request.user)
+            post.save()
+            messages.success(request, "Post saved!")
+            return redirect('/profile/')
+        return render(request, 'post/add_post.html')
+
+    #
+    # class LikeView(View):
+    #     """
+    #
+    #     Like other users' posts
+    #     """
+    #
+    #     def get(self, request, pk):
+    #         post = Post.objects.get(pk=pk)
+    #         if post.like_set.filter(user_id_id=request.user.id):
+    #             button = "dislike"
+    #         else:
+    #             button = "like"
+    #         return render('post_detail', {'button': button})
+    #
+    #     def post(self, request, pk):
+    #         post = Post.objects.get(pk=pk)
+    #         like = Like(post_id_id=post.id, user_id_id=request.user.id)
+    #         if Like.objects.get(post_id_id=post.id, user_id_id=request.user.id):
+    #             like = Like.objects.de(post_id_id=post.id, user_id_id=request.user.id)
+    #             like.delete()
+    #         else:
+    #             like.save()
+    #         return redirect('post_detail', pk=pk)
 
 
 def like(request, pk):
@@ -86,7 +83,7 @@ def like(request, pk):
 
     Like other users' posts
     """
-    main_user = User.objects.get(active=True)
+    main_user = request.user
     to_like = Post.objects.get(pk=pk)
     if Like.objects.filter(post_id_id=to_like.id, user_id_id=main_user.id):
         return redirect('post_detail', pk=pk)
@@ -103,7 +100,7 @@ Leave a comment for other users' posts
     """
 
     def post(self, request, pk):
-        user_obj = User.objects.get(active=True)
+        user_obj = request.user
         to_comment = Post.objects.get(pk=pk)
         note = request.POST.get("note")
         # is_comment = request.POST.get("comment_btn")
@@ -120,7 +117,7 @@ class FollowingPost(View):
     """
     def get(self, request):
         posts = []
-        person = User.objects.get(active=True)
+        person = request.user
         following = person.followed.all()
         if following:
             for f in following:
@@ -132,4 +129,36 @@ class FollowingPost(View):
         else:
             return render(request, 'post/following_post.html')
 
+class UpdatePost(UpdateView):
+    model = Post
+    template_name = 'post/edit_post.html'
+    fields = ['title', 'content', 'image']
+    success_url = '/post/'
 
+# def post_delete(pk):
+#     instance = Post.objects.get(id=pk)
+#     instance.delete()  # or save edits
+#     # messages.success(request, "Successfully Deleted")
+#     return redirect("/post/")
+
+# @login_required
+# def post_delete(request, pk=None):
+#     instance = get_object_or_404(Post, pk=pk)
+#     if request.user == Post.account_id:
+#         instance.delete()  # or save edits
+#         messages.success(request, "Successfully Deleted")
+#         return redirect("/post/")
+# else:
+#     raise PermissionDenied  # import it from django.core.exceptions
+
+def post_delete(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.delete()
+    return redirect('/post/')
+
+
+def comment_delete(request, pk):
+    instance = get_object_or_404(Comment, pk=pk)
+    instance.delete()  # or save edits
+    # messages.success(request, "Successfully Deleted")
+    return redirect("/post/")

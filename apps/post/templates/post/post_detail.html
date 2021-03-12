@@ -1,7 +1,15 @@
-{% extends 'user/profile.html' %}
+{% extends 'account/profile.html' %}
 {% load post_custom_tags %}
 {% block title %}Post Detail{% endblock %}
 {% block content %}
+    {% if user == post.account_id %}
+        <ul>
+            <li>
+                <button id="demo"><a href="/post/edit_post/{{ post.pk }}">Edit Post</a></button>
+                <button id="demo"><a href="/post/post_delete/{{ post.pk }}">Delete</a></button>
+            </li>
+        </ul>
+    {% endif %}
     <table>
         <tr>Title: {{ post.title }}</tr>
         </br>
@@ -16,15 +24,13 @@
         </br>
         <tr>Comments:{% show_comments post.pk %}</tr>
     </table>
-
-
-    <button id="demo"><a type="button" class="button-caballo" role="button"
-                         href="{% url 'like' post.pk %}">Like</a></button>
-
     <form method="post" action="{% url 'comment' post.pk %}">
-        {% csrf_token %}
-        <input placeholder=" comment" type="text" name="note">
-        <button type="submit" value="comment_btn" >comment</button>
-    </form>
-
+        <button id="demo"><a type="button" class="button-caballo" role="button"
+                             href="{% url 'like' post.pk %}">like</a></button>
+        <form method="post" action="{% url 'comment' post.pk %}">
+            {% csrf_token %}
+            <input placeholder=" comment" type="text" name="note">
+            <button type="submit" value="comment_btn">comment</button>
+        </form>
+        </form>
 {% endblock %}

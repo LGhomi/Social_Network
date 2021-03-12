@@ -1,10 +1,10 @@
+# from apps.post.managers import PostManager
+from math import floor
+from django.db import models
 from django.utils import timezone
 from django.utils.timezone import now
-from django.db import models
-
-# from apps.post.managers import PostManager
-from apps.user.models import User
-from math import floor
+from apps.account.models import User
+from django.conf import settings
 
 
 class Post(models.Model):
@@ -12,7 +12,7 @@ class Post(models.Model):
     content = models.TextField()
     image = models.ImageField(null=True, blank=True)
     created_date = models.DateTimeField(default=now)
-    user_id = models.ForeignKey('user.User', on_delete=models.CASCADE,limit_choices_to={'active': 'True'})
+    account_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     # objects = PostManager()
     class Meta:
@@ -28,10 +28,10 @@ class Post(models.Model):
         :return: How long the post has been published.
         """
         age = timezone.now() - self.created_date
-        age_year = age.days/365
-        age_month = age.days/30
+        age_year = age.days / 365
+        age_month = age.days / 30
         age_day = age.days
-        age_hour = (age.seconds/60)/60
+        age_hour = (age.seconds / 60) / 60
         if age_year >= 1:
             return '{} years a go'.format(floor(age_year))
         elif age_month >= 1:
@@ -48,7 +48,7 @@ class Comment(models.Model):
     note = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=now)
     post_id = models.ForeignKey('Post', on_delete=models.CASCADE)
-    user_id = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created_date']
@@ -60,13 +60,11 @@ class Comment(models.Model):
 class Like(models.Model):
     created_date = models.DateTimeField(default=now)
     post_id = models.ForeignKey('Post', on_delete=models.CASCADE)
-    user_id = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created_date']
         unique_together = ('post_id', 'user_id',)
 
     def __str__(self):
-        return str(self.user_id) +" "+"liked"+" "+ str(self.post_id)
-
-
+        return str(self.user_id)

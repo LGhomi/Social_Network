@@ -1,9 +1,0 @@
-{% extends 'user/profile.html' %}
-{% block header%}{{ username }}{% endblock %}
-{% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <input name="logout" type="hidden" value="logout">
-        <button type="submit">Logout</button>
-    </form>
-{% endblock %}
