@@ -19,79 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="phase 2.">
-      <change afterPath="$PROJECT_DIR$/apps/account/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/form.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/managers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/templates/account/change-password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/templates/account/edit_user.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/templates/account/requests.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/templates/account/user_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/templatetags/user_tags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/account/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/post/templates/post/edit_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/managers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/migrations/0002_auto_20210301_1203.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/migrations/0003_auto_20210301_1206.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/migrations/0004_auto_20210301_1857.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/add_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/add_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/following_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/following_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/my_post_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/my_post_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/paged_post_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templates/post/post_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templates/post/post_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/templatetags/post_custom_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/templatetags/post_custom_tags.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/post/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/post/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/form.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0002_remove_user_friends.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/migrations/0002_remove_user_slug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0003_friendrequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/migrations/0003_friend_request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0004_auto_20210227_1935.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0005_user_view_profile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0006_auto_20210227_2223.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0007_user_view_profile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0008_auto_20210301_1203.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/0009_auto_20210301_1951.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/static/user/pro_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/static/user/pro_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/static/user/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/static/user/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/follow.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templates/account/follow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/followed_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templates/account/followed_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/follower_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templates/account/follower_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templates/account/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templates/account/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/register_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templates/account/register_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templates/account/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/user_detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templates/user/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templates/account/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templatetags/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/templatetags/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/templatetags/follow_tags.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/user/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/socialwebsite/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/social_website/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socialwebsite/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/social_website/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socialwebsite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/social_website/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socialwebsite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/social_website/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socialwebsite/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/social_website/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templatetags/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templatetags/custom_tags.py" beforeDir="false" />
-    </list>
+    <list default="true" id="b2fb5e9a-eb03-4dde-b9bb-277bfb0e7b56" name="Default Changelist" comment="phase 3. &#10;authentication,edit and delete post ,delete comment,send friend request,edit profile" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -145,7 +73,7 @@
       <workItem from="1614200303777" duration="516000" />
       <workItem from="1614252314524" duration="951000" />
       <workItem from="1614278058610" duration="312000" />
-      <workItem from="1615572413306" duration="616000" />
+      <workItem from="1615572413306" duration="936000" />
     </task>
     <task id="LOCAL-00001" summary="profile template edit and posts, add post views added.">
       <created>1614200577887</created>
@@ -168,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614883120077</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="phase 3. &#10;authentication,edit and delete post ,delete comment,send friend request,edit profile">
+      <created>1615573173375</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1615573173375</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +126,8 @@
     <MESSAGE value="profile template edit and posts, add post views added." />
     <MESSAGE value="final profile (991206)" />
     <MESSAGE value="phase 2." />
-    <option name="LAST_COMMIT_MESSAGE" value="phase 2." />
+    <MESSAGE value="phase 3. &#10;authentication,edit and delete post ,delete comment,send friend request,edit profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase 3. &#10;authentication,edit and delete post ,delete comment,send friend request,edit profile" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="WindowStateProjectService">
