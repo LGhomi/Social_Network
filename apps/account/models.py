@@ -1,10 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-# from .managers import UserManager
 from django.db import models
 from django.utils.timezone import now
-import hashlib
-from django_extensions.db.fields import AutoSlugField
-# from common.validators import mobile_length_validator, mobile_validator, validate_not_empty, email_validator
+from common.validators import mobile_length_validator, mobile_validator, email_validator
 from apps.account.managers import UserManager
 
 
@@ -15,10 +12,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=150, blank=True, null=True)
-    # username = models.CharField(max_length=150, blank=True, null=True)
     gender = models.CharField('gender', max_length=1, choices=[('F', 'female'), ('M', 'male')], blank=True)
-    email = models.EmailField(blank=False, unique=True)
-    phone_number = models.CharField(max_length=15, blank=True, unique=True)
+    email = models.EmailField(blank=False, unique=True, validators=[email_validator])
+    phone_number = models.CharField(max_length=15, blank=True, unique=True, null=True,
+                                    validators=[mobile_length_validator, mobile_validator])
     bio = models.TextField(blank=True)
     website = models.CharField(max_length=100, null=True, blank=True)
     friends = models.ManyToManyField("User", blank=True)
@@ -84,12 +81,6 @@ class Following(models.Model):
         obj, create = cls.objects.get_or_create(user=user)
         obj.follower.add(another_account)
         print("followed")
-
-    # @classmethod
-    # def unfollow(cls, account, another_account):
-    #     obj, create = cls.objects.get_or_create(account=account)
-    #     obj.followed.remove(another_account)
-    #     print("unfollowed")
 
     def __str__(self):
         return self.user.email

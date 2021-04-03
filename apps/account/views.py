@@ -64,6 +64,8 @@ class RegisterView(CreateView):
                             user.save()
                             request.session['user_mobile'] = user.mobile
                             return HttpResponseRedirect(reverse('verify'))
+                        else:
+                            return HttpResponse('phone number is empty')
 
                     except User.DoesNotExist:
                         # user.username = form['phone_number']
@@ -85,8 +87,12 @@ class RegisterView(CreateView):
 def verify(request):
     try:
         mobile = request.session.get('user_mobile')
-        user = User.objects.get(phone_number=mobile)
+        if mobile==None:
+            # return HttpResponse('mobile is empty!')
+            messages.error('mobile is empty ')
+            # return HttpResponseRedirect(reverse('verify'))
 
+        user = User.objects.get(phone_number=mobile)
         if request.method == "POST":
 
             # check otp expiration

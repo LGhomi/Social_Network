@@ -9,15 +9,7 @@
 <body>
 <div class="login">
     <br>
-    {#    <div class="message"><p>{{ account }} {{ message }}</p></div>#}
-    {#    {% if account.is_authenticated %}#}
-    {#        <form action="" method="post">#}
-    {#            {% csrf_token %}#}
-    {#            <input type="submit" name="logout" value="logout">#}
-    {#        <button type="submit">logout</button>#}
-    {#        </form>#}
-    {#        <li><a href="{% url 'add_new_post' %}">Add Post</a></li>#}
-    {#    {% else %}#}
+        <div class="message"><p>{{ message }}</p></div>
     <h class="text">To Share :)</h>
     <form method="post" class="login_form">
         {% csrf_token %}
@@ -31,8 +23,6 @@
         <br>
         <input type="submit" value="log in" class="log_in">
     </form>
-    <a href="#" class="forgot_pass">Forgot Password?</a>
-    {#    {% endif %}#}
     <div class="sign_up"><br> &nbsp;Don't have an account? <br><a href={% url "register" %}> Sign up</a></div>
 </div>
 
