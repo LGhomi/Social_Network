@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -120,3 +120,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'leilaghomi73@gmail.com'
+EMAIL_HOST_PASSWORD = '6170055601'
+EMAIL_USE_TLS = True
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+Kavenegar_API = '556D6C7150784A6237764D494E396D4F59314630616E47782B645A75364E4374496E3968776B78535375413D'
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.INFO: 'success'
+}
+# from django.contrib import messages, auth
