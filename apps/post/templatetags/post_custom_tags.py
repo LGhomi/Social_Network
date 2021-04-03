@@ -1,6 +1,7 @@
 from django import template
 
 from ..models import Post
+from ...account.models import Friend_Request
 
 register = template.Library()
 
@@ -19,11 +20,11 @@ def count_like(pk):
 
 
 @register.inclusion_tag('post/post_comments.html')
-def show_comments(pk):
+def show_comments(pk, user):
     "show comment of post"
     post = Post.objects.get(pk=pk)
     comments = post.comment_set.all()
-    return {'comments': comments}
+    return {'comments': comments, 'user': user}
 
 
 @register.inclusion_tag('post/user_post.html')
@@ -31,3 +32,10 @@ def user_post(user):
     "show post of user"
     posts = user.post_set.all()
     return {'posts': posts}
+
+# @register.inclusion_tag('account/user_detail.html')
+# def check_request(pk):
+#     "show comment of post"
+#     req = Friend_Request.objects.get(from_user_id=pk)
+#     # comments = post.comment_set.all()
+#     return {'comments': comments}

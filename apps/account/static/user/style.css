@@ -77,7 +77,6 @@
     left: 400px;
 
 }
-
 .signup_form {
     padding: 35px;
     margin: 20px;
@@ -89,7 +88,10 @@
     margin-bottom: 10px;
     width: 100px;
     height: 35px;
-    background-color: #F3D9F5;
+    background-color: #f3d9f5;
     border: none;
 }
+
+
+
 /*__________profile__________*/

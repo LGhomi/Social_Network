@@ -12,12 +12,18 @@
 <header>{{ request.user.email }}</header>
 <nav class="header">
     <ul style="display: flex; justify-content: space-around">
-        <li><a href="{% url 'add_new_post' %}">ADD New Post</a></li>
-        <li><a href="{% url 'search' %}">Search</a></li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-        <li><a href="{% url 'edit' request.user.id %}">edit profile</a></li>
-        <li><a href="{% url 'following_post' %}">Posts</a></li>
-        <li><a href="{% url 'changepass' %}">change pass</a></li>
+        <li><a class="test" href="{% url 'add_new_post' %}">ADD New Post<span
+                class="svg">  {% include 'account/img/new.svg' %}</span></a></li>
+        <li><a class="test" href="{% url 'search' %}">Search<span
+                class="svg"> {% include 'account/img/search (1).svg' %} </span></a></li>
+        <li><a class="test" href="{% url 'logout' %}">Logout<span
+                class="svg"> {% include 'account/img/logout.svg' %} </span></a></li>
+        <li><a class="test" href="{% url 'edit' request.user.id %}">Edit Profile<span
+                class="svg"> {% include 'account/img/resume.svg' %} </span></a></li>
+        <li><a class="test" href="{% url 'following_post' %}">Posts <span
+                class="svg" > {% include 'account/img/social-media.svg' %} </span></a></li>
+        <li><a class="test" href="{% url 'changepass' %}">Change Pass <span
+                class="svg"> {% include 'account/img/rotation-lock.svg' %} </span></a></li>
 
     </ul>
 </nav>
@@ -27,21 +33,28 @@
             <li><a href="{% url 'my_follower' %}">Followers :{% follower_cnt request %}</a></li>
             <li><a href="{% url 'my_following' %}">Following :{% following_cnt request %}</a></li>
             <li><a href="{% url 'my_post_list' %}">My Posts :{% p_cnt request.user.id %}</a></li>
-            <li><a href="{% url 'Request_List' %}">requests</a></li>
+            <li><a href="{% url 'Request_List' %}">requests </a></li>
         </ul>
     </div>
 </aside>
 <main>
+
     <div class="main">
+
         {% block content %}
+                {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
         {% endblock %}
     </div>
 </main>
-<footer class="footer">
-    <ul>
-        <li></li>
-        <li></li>
-    </ul>
 </footer>
 </body>
 </html>

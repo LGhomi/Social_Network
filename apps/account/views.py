@@ -1,25 +1,130 @@
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import DetailView, ListView, CreateView, RedirectView, UpdateView
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
 
+from .helper import get_random_otp, send_otp, check_otp_expiration
+from .tokens import account_activation_token
+from django.contrib.auth.models import User
+from django.core.mail import EmailMessage
 from apps.account.form import AccountCreationForm, UserUpdateForm
 from django.contrib import messages, auth
 
 from apps.account.models import User, Following, Friend_Request
+from django.contrib import messages, auth
 
 
 class RegisterView(CreateView):
     form_class = AccountCreationForm
-    success_url = 'login'
+    # success_url = '/'
     template_name = 'account/register_user.html'
 
     def post(self, request, **kwargs):
-        messages.success(request, 'User was successfully created.')
-        return super(RegisterView, self).post(request)
+        if request.method == 'POST':
+            form = AccountCreationForm(request.POST)
+            if form.is_valid():
+                user = form.save(commit=False)
+                if user.reg_type == 'email':
+                    # user.username = form.email
+                    user.is_active = False
+                    user.save()
+                    current_site = get_current_site(request)
+                    mail_subject = 'Activate your  account.'
+                    message = render_to_string('account/acc_active_email.html', {
+                        'user': user,
+                        'domain': current_site.domain,
+                        'uid': urlsafe_base64_encode(force_bytes(user.pk)).encode().decode(),
+                        'token': account_activation_token.make_token(user),
+                    })
+                    to_email = form.cleaned_data.get('email')
+                    email = EmailMessage(
+                        mail_subject, message, to=[to_email]
+                    )
+                    email.send()
+                    return HttpResponse('Please confirm your email address to complete the registration')
+                else:
+                    try:
+                        mobile = request.POST.get('phone_number')
+                        if User.objects.get(phone_number='mobile'):
+                            user = User.objects.get(phone_number='mobile')
+                            # send otp
+                            otp = get_random_otp()
+                            # send_otp(mobile, otp)
+                            # save otp
+                            print(otp)
+                            user.otp = otp
+                            user.save()
+                            request.session['user_mobile'] = user.mobile
+                            return HttpResponseRedirect(reverse('verify'))
+
+                    except User.DoesNotExist:
+                        # user.username = form['phone_number']
+                        mobile = request.POST.get('phone_number')
+                        otp = get_random_otp()
+                        send_otp(mobile, otp)
+                        print(otp)
+                        user.otp = otp
+                        user.is_active = False
+                        user.save()
+                        request.session['user_mobile'] = user.phone_number
+                        return HttpResponseRedirect(reverse('verify'))
+
+            else:
+                form = AccountCreationForm()
+            return render(request, 'account/register_user.html', {'form': form})
+
+
+def verify(request):
+    try:
+        mobile = request.session.get('user_mobile')
+        user = User.objects.get(phone_number=mobile)
+
+        if request.method == "POST":
+
+            # check otp expiration
+            if not check_otp_expiration(user.phone_number):
+                messages.error(request, "OTP is expired, please try again.")
+                return HttpResponseRedirect(reverse('register'))
+
+            if user.otp != int(request.POST.get('otp')):
+                messages.error(request, "OTP is incorrect.")
+                return HttpResponseRedirect(reverse('verify'))
+
+            user.is_active = True
+            user.save()
+            login(request, user)
+            return HttpResponseRedirect(reverse('profile'))
+
+        return render(request, 'account/verify.html', {'mobile': mobile})
+
+    except User.DoesNotExist:
+        messages.error(request, "Error accorded, try again.")
+        return HttpResponseRedirect(reverse('register'))
+
+
+class ActivateView(View):
+    def get(self, request, uidb64, token):
+
+        try:
+            uid = force_text(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=uid)
+        except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+        if user is not None and account_activation_token.check_token(user, token):
+            user.is_active = True
+            user.save()
+            login(request, user)
+            return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        else:
+            return HttpResponse('Activation link is invalid!')
 
 
 class UserList(ListView):
@@ -42,7 +147,6 @@ class UserDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
-
 
 
 class Search(View):
@@ -69,7 +173,7 @@ class LogoutView(RedirectView):
 
     def get(self, request, *args, **kwargs):
         auth.logout(request)
-        messages.success(request, 'You are now logged out')
+        # messages.success(request, 'You are now logged out')
         return super(LogoutView, self).get(request, *args, **kwargs)
 
 
@@ -120,9 +224,12 @@ def send_friend_request(request, userID):
     to_user = User.objects.get(id=userID)
     friend_request, created = Friend_Request.objects.get_or_create(from_user=from_user, to_user=to_user)
     if created:
-        return HttpResponse('request sent')
+        messages.error(request, "request sent")
+        return HttpResponseRedirect(reverse('profile'))  # return HttpResponse('request sent')
     else:
-        return HttpResponse('request was already sent')
+        messages.error(request, "request was already sent")
+        return HttpResponseRedirect(reverse('profile'))
+        # return HttpResponse('request was already sent')
 
 
 @login_required
@@ -146,10 +253,13 @@ def accept_friend_request(request, requestID):
 
         if not is_followerr:
             Following.follow_back(to_user, from_user)
-
-        return HttpResponse('request accepted')
+        messages.error(request, "request accepted")
+        return HttpResponseRedirect(reverse('profile'))
+        # return HttpResponse('request accepted')
     else:
-        return HttpResponse('request not accepted')
+        messages.error(request, "request not accepted")
+        return HttpResponseRedirect(reverse('profile'))
+        # return HttpResponse('request not accepted')
 
 
 class RequestList(View):

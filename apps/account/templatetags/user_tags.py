@@ -22,6 +22,11 @@ def count_followed(request):
     return account.followed.count()
 
 
+# @register.simple_tag(name='req_cnt')
+# def count_req(request):
+#     person = User.objects.get(id=request.user.id)
+#     return person.to_user.count()
+
 # @register.simple_tag(name='requests')
 # def requests_list(request):
 #     account = User.objects.get(id=request.user.id)

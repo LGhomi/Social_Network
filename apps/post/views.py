@@ -27,31 +27,35 @@ class PostDetail(DetailView):
     show detail of post.
     """
     model = Post
+    template_name = 'post/post_detail.html'
+    context_object_name = 'post'
 
 
-class PostView(LoginRequiredMixin, CreateView):
+class AddPostView(LoginRequiredMixin, CreateView):
     """
     add new post
     """
-
     form_class = PostForm
-    template_name = 'post/add_post.html'
+    template_name = 'post/add_new_post.html'
     success_url = '/profile/'
 
-    def post(self, request):
+    def post(self, request, **kwargs):
         """
         :param request: request for create new post
         :return: save post and send username to template
         """
 
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES or None)
         if form.is_valid():
             post = Post(**form.cleaned_data, account_id=request.user)
             post.save()
             messages.success(request, "Post saved!")
             return redirect('/profile/')
-        return render(request, 'post/add_post.html')
+        return render(request, 'post/add_new_post.html')
 
+
+def success(request):
+    return HttpResponse('successfully uploaded')
     #
     # class LikeView(View):
     #     """
@@ -115,6 +119,7 @@ class FollowingPost(View):
     """
     Each user can see other users' posts in their profile
     """
+
     def get(self, request):
         posts = []
         person = request.user
@@ -129,11 +134,13 @@ class FollowingPost(View):
         else:
             return render(request, 'post/following_post.html')
 
+
 class UpdatePost(UpdateView):
     model = Post
     template_name = 'post/edit_post.html'
     fields = ['title', 'content', 'image']
     success_url = '/post/'
+
 
 # def post_delete(pk):
 #     instance = Post.objects.get(id=pk)
@@ -154,11 +161,12 @@ class UpdatePost(UpdateView):
 def post_delete(request, pk):
     post = Post.objects.get(pk=pk)
     post.delete()
-    return redirect('/post/')
+    return redirect('post_detail',  pk=pk)
 
 
 def comment_delete(request, pk):
     instance = get_object_or_404(Comment, pk=pk)
+    pk = instance.post_id.pk
     instance.delete()  # or save edits
     # messages.success(request, "Successfully Deleted")
-    return redirect("/post/")
+    return redirect('post_detail',  pk=pk)

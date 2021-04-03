@@ -2,35 +2,37 @@
 {% load post_custom_tags %}
 {% block title %}Post Detail{% endblock %}
 {% block content %}
+    <div class="">
     {% if user == post.account_id %}
-        <ul>
+        <ul style="margin-top: 0">
             <li>
-                <button id="demo"><a href="/post/edit_post/{{ post.pk }}">Edit Post</a></button>
-                <button id="demo"><a href="/post/post_delete/{{ post.pk }}">Delete</a></button>
+                <button class="btn-post" id="demo"><a href="/post/edit_post/{{ post.pk }}">Edit Post</a></button>
+                <button class="btn-post" id="demo"><a href="/post/post_delete/{{ post.pk }}">Delete</a></button>
             </li>
         </ul>
     {% endif %}
-    <table>
-        <tr>Title: {{ post.title }}</tr>
-        </br>
-        <tr>Content: {{ post.content }}</tr>
-        {#        </br>#}
-        {#        <tr>{{ post.image }}</tr>#}
-        </br>
-        <tr>Age: {{ post.age }}</tr>
-        </br>
-        </br>
+    <table >
+        <tr>{{ post.title }}</tr>
+        </br><br>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" width="200px" height="200px">
+        {% endif %}
+        <br><tr>{{ post.content }}</tr>
+        <br></br>
+        <tr>{{ post.age }}</tr>
+        <br>
         <tr>likes:{% l_cnt post.pk %}</tr>
-        </br>
-        <tr>Comments:{% show_comments post.pk %}</tr>
+        <br>
+        <tr>Comments:<br>{% show_comments post.pk user %}</tr>
     </table>
     <form method="post" action="{% url 'comment' post.pk %}">
-        <button id="demo"><a type="button" class="button-caballo" role="button"
+        <button class="btn-search" id="demo"><a type="button" class="button-caballo " role="button"
                              href="{% url 'like' post.pk %}">like</a></button>
         <form method="post" action="{% url 'comment' post.pk %}">
             {% csrf_token %}
             <input placeholder=" comment" type="text" name="note">
-            <button type="submit" value="comment_btn">comment</button>
+            <button class="btn-search" type="submit" value="comment_btn">comment</button>
         </form>
-        </form>
+    </form>
+    </div>
 {% endblock %}

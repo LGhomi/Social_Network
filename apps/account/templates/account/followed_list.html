@@ -4,6 +4,7 @@
 {% block content %}
 
     {% if users %}
+<div class="form">
         <p>following</p>
         <ul>
         <ul>
@@ -13,8 +14,10 @@
         </ul>
 
         </ul>
+            </div>
     {% else %}
-        <h1>No following!</h1>
+        <h1 style="color: #642f5c">No following!</h1>
     {% endif %}
+
 {% endblock %}
 

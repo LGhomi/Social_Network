@@ -15,7 +15,7 @@ from apps.account.models import User
 class AccountCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'gender', 'phone_number', 'bio', 'website')
+        fields = ('email', 'first_name', 'last_name', 'gender', 'phone_number', 'bio', 'website', 'reg_type')
 
 
 class UserUpdateForm(UserChangeForm):

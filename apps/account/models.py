@@ -18,8 +18,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # username = models.CharField(max_length=150, blank=True, null=True)
     gender = models.CharField('gender', max_length=1, choices=[('F', 'female'), ('M', 'male')], blank=True)
     email = models.EmailField(blank=False, unique=True)
-    phone_number = models.CharField(max_length=15, blank=True,
-                                    )
+    phone_number = models.CharField(max_length=15, blank=True, unique=True)
     bio = models.TextField(blank=True)
     website = models.CharField(max_length=100, null=True, blank=True)
     friends = models.ManyToManyField("User", blank=True)
@@ -27,6 +26,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField('superuser', default=False)
     is_staff = models.BooleanField('staff', default=False)
     date_joined = models.DateTimeField(default=now)
+    reg_type = models.CharField(choices=[('email', 'email'), ('sms', 'sms',)], max_length=5)
+    otp = models.PositiveIntegerField(blank=True, null=True)
+    otp_create_time = models.DateTimeField(auto_now=True)
     # slug = AutoSlugField(populate_from=['email'], unique=True, )
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -91,6 +93,7 @@ class Following(models.Model):
 
     def __str__(self):
         return self.user.email
+
 
 class Friend_Request(models.Model):
     from_user = models.ForeignKey(User, related_name='from_user', on_delete=models.CASCADE)

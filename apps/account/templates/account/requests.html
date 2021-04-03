@@ -4,19 +4,19 @@
 {% block content %}
 
     {% if users %}
+        <div class="form">
         <p>requests </p>
         <ul>
 
             {% for request in users %}
                 <h1>{{ request.from_user }}</h1>
-                <li><a href="/accept_friend_request/{{ request.id }}">accept</a></li>
+                <li><button class="btn-search" style="width: 60px; height: 40px"><a href="/accept_friend_request/{{ request.id }}">accept</a></button></li>
 
             {% endfor %}
-
-
         </ul>
+        </div>
     {% else %}
-        <h1>No request!</h1>
+        <h1 style="color: #642f5c">No request!</h1>
     {% endif %}
 {% endblock %}
 

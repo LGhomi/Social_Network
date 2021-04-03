@@ -2,11 +2,14 @@
 {% block title %}My Posts{% endblock %}
 {% block content %}
     {% if my_post_list %}
+        <div >
+        <h1>my posts:</h1>
         <ul>
             {% for post in my_post_list %}
                 <li><a href="/post/{{ post.id }}">{{ post.title }}</a></li>
             {% endfor %}
         </ul>
+        </div>
     {% else %}
         <h1>No Post!</h1>
     {% endif %}

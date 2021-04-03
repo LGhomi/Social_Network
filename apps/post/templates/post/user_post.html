@@ -1,6 +1,10 @@
 {% if posts %}
     {% for post in posts %}
-        <li><a href="{% url 'post_detail' post.id %}"> {{ post.title }}</a></li>
+        <ol >
+            <a href="{% url 'post_detail' post.id %}"> {{ post.title }}</a>
+        </ol>
+
+
     {% endfor %}
 {% else %}
     <span>No Posts!</span>

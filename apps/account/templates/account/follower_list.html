@@ -4,14 +4,16 @@
 {% block content %}
 
     {% if users %}
+        <div class="form">
         <p>followers</p>
         <ul>
             {% for account in users %}
                 <li><a href={% url 'user_detail' account.user_id %}>{{ account }}</a></li>
             {% endfor %}
         </ul>
+        </div>
     {% else %}
-        <h1>No follower!</h1>
+        <h1 style="color: #642f5c">No follower!</h1>
     {% endif %}
 {% endblock %}
 

@@ -9,8 +9,8 @@ from django.conf import settings
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
-    image = models.ImageField(null=True, blank=True)
+    content = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='images',null=True, blank=True)
     created_date = models.DateTimeField(default=now)
     account_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
