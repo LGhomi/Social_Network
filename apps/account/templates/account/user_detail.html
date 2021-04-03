@@ -3,7 +3,7 @@
 {% block content %}
 
     <p>{{ user }}</p>
-    {% if use not in request.user.friends.all and user != request.user %}a
+    {% if use not in request.user.friends.all and user != request.user %}
         <button><a href="/send_friend_request/{{ user.id }}">send request</a></button>
         <br>{% endif %}
 

@@ -51,9 +51,47 @@ class AddPostView(LoginRequiredMixin, CreateView):
             return redirect('profile')
         return render(request, 'post/add_new_post.html')
 
+    # def post(self, request, **kwargs):
+    #     """
+    #     :param request: request for create new post
+    #     :return: save post and send username to template
+    #     """
+    #
+    #     form = PostForm(request.POST, request.FILES or None)
+    #     if form.is_valid():
+    #         post = Post(**form.cleaned_data, account_id=request.user)
+    #         post.save()
+    #         messages.success(request, "Post saved!")
+    #         return redirect('/profile/')
+    #     return render(request, 'post/add_new_post.html')
+
 
 def success(request):
     return HttpResponse('successfully uploaded')
+    #
+    # class LikeView(View):
+    #     """
+    #
+    #     Like other users' posts
+    #     """
+    #
+    #     def get(self, request, pk):
+    #         post = Post.objects.get(pk=pk)
+    #         if post.like_set.filter(user_id_id=request.user.id):
+    #             button = "dislike"
+    #         else:
+    #             button = "like"
+    #         return render('post_detail', {'button': button})
+    #
+    #     def post(self, request, pk):
+    #         post = Post.objects.get(pk=pk)
+    #         like = Like(post_id_id=post.id, user_id_id=request.user.id)
+    #         if Like.objects.get(post_id_id=post.id, user_id_id=request.user.id):
+    #             like = Like.objects.de(post_id_id=post.id, user_id_id=request.user.id)
+    #             like.delete()
+    #         else:
+    #             like.save()
+    #         return redirect('post_detail', pk=pk)
 
 
 def like(request, pk):

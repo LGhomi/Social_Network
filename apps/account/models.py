@@ -26,7 +26,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     reg_type = models.CharField(choices=[('email', 'email'), ('sms', 'sms',)], max_length=5)
     otp = models.PositiveIntegerField(blank=True, null=True)
     otp_create_time = models.DateTimeField(auto_now=True)
-    # slug = AutoSlugField(populate_from=['email'], unique=True, )
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
@@ -57,9 +57,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         """
         return self.email
 
-    # def save(self, *args, **kwargs):
-    #     self.password = hashlib.sha256(self.password.encode('utf-8')).hexdigest()
-    #     super().save(*args, **kwargs)  # Call the "real" save() method.
 
 
 class Following(models.Model):

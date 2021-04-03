@@ -88,7 +88,6 @@ def verify(request):
     try:
         mobile = request.session.get('user_mobile')
         if mobile==None:
-            # return HttpResponse('mobile is empty!')
             messages.error('mobile is empty ')
             # return HttpResponseRedirect(reverse('verify'))
 

@@ -24,7 +24,7 @@ def show_comments(pk, user):
     "show comment of post"
     post = Post.objects.get(pk=pk)
     comments = post.comment_set.all()
-    return {'comments': comments, 'user': user, 'post': post}
+    return {'comments': comments, 'user': user,'post':post}
 
 
 @register.inclusion_tag('post/user_post.html')
